@@ -1,15 +1,17 @@
 {
-  "name": "My Searching APP",
   "short_name": "Searching",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#007bff",
+  "name": "My Searching App",
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
-  ]
+  ],
+  "start_url": "/MySearchingApp/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/MySearchingApp/",
+  "theme_color": "#ffffff",
+  "description": "My Custom Searching Application"
 }
