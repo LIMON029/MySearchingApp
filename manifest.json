@@ -1,6 +1,6 @@
 {
   "name": "My Searching APP",
-  "short_name": "APP",
+  "short_name": "Searching",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",

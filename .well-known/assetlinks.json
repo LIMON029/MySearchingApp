@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.limon029.twa",
+        "sha256_cert_fingerprints": ["30:DE:AE:B8:BF:4C:55:6C:27:2B:7F:A9:58:17:7E:5B:ED:1B:76:0A:26:22:36:66:62:D8:20:6B:A4:70:DF:16"]
+      }
+    }]
