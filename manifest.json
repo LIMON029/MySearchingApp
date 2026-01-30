@@ -3,7 +3,7 @@
   "name": "My Searching App",
   "icons": [
     {
-      "src": "icon-512.png",
+      "src": "icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
