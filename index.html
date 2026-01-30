@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>분실물 찾기 웹앱</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Teachable Machine 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+  <!-- 메인 화면 -->
+  <section id="home" class="page active">
+    <div class="logo">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="#ffffff">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </div>
+    <h1>분실물 찾기</h1>
+    <button onclick="goPage('check')">물품 종류 확인</button>
+    <button onclick="goPage('capture')">물품 촬영</button>
+  </section>
+
+  <!-- 물품 종류 확인 화면 (수정됨!) -->
+  <section id="check" class="page">
+    <h2>물품 종류</h2>
+    <div class="grid">
+      <!-- 컵 -->
+      <div class="card">
+        <div class="image-container">
+          <img src="cup.jpg" alt="컵">
+          <div class="no-image">❌</div>
+        </div>
+        <p>컵</p>
+      </div>
+      
+      <!-- 핸드크림 -->
+      <div class="card">
+        <div class="image-container">
+          <img src="handcream.jpg" alt="핸드크림">
+          <div class="no-image">❌</div>
+        </div>
+        <p>핸드크림</p>
+      </div>
+      
+      <!-- 형광펜 -->
+      <div class="card">
+        <div class="image-container">
+          <img src="pen.jpg" alt="형광펜">
+          <div class="no-image">❌</div>
+        </div>
+        <p>형광펜</p>
+      </div>
+      
+      <!-- USB -->
+      <div class="card">
+        <div class="image-container">
+          <img src="usb.jpg" alt="USB">
+          <div class="no-image">❌</div>
+        </div>
+        <p>USB</p>
+      </div>
+    </div>
+    <button onclick="goPage('home')">🏠 홈으로</button>
+  </section>
+
+  <!-- 물품 촬영 화면 -->
+  <section id="capture" class="page">
+    <h2>물품 촬영</h2>
+    <video id="camera" autoplay playsinline muted></video>
+    <button id="capture-btn">📸 촬영</button>
+    <canvas id="ai-canvas" width="224" height="224" style="display:none;"></canvas>
+    <div id="result"></div>
+    <button onclick="goPage('home')">🏠 홈으로</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

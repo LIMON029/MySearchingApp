@@ -1,0 +1,192 @@
+/* 전체 공통 스타일 */
+* { box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+/* 페이지 구역 숨김/보이기 */
+.page { display: none; padding: 20px; }
+.page.active { display: block; }
+
+/* 홈 화면 로고 */
+.logo { margin: 30px 0; }
+.logo svg {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+h1, h2 { margin: 20px 0; }
+button {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+button:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* 물품 종류 카드 */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+}
+.card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  color: #333;
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* 사진 컨테이너 + 사진 없음 처리 */
+.image-placeholder {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.no-image {
+  display: none;
+  font-size: 48px;
+  color: #ccc;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card p { font-weight: bold; font-size: 16px; }
+
+/* 카메라 화면 */
+#camera {
+  width: 90%;
+  max-width: 350px;
+  border-radius: 15px;
+  border: 3px solid rgba(255,255,255,0.5);
+  margin: 20px auto;
+  display: block;
+  background: #000;
+}
+
+#capture-btn {
+  background: #ff6b6b;
+  font-size: 18px;
+  padding: 15px 30px;
+}
+
+#capture-btn:active {
+  transform: scale(0.95);
+}
+
+#result {
+  margin: 30px 0;
+  font-size: 20px;
+  min-height: 100px;
+}
+
+/* 발견됨! 초록색 O */
+.success-mark {
+  font-size: 80px;
+  color: #4CAF50;
+  font-weight: bold;
+  margin: 20px 0;
+  display: block;
+}
+
+/* 검색 결과 없음 - 회색 X */
+.no-image-big {
+  font-size: 80px;
+  color: #ccc;
+  font-weight: bold;
+  margin: 20px 0;
+  display: block;
+}
+
+/* 사진 컨테이너 (수정됨!) */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* X와 겹치지 않게 */
+}
+
+.no-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #ccc;
+  font-weight: bold;
+  opacity: 0; /* 기본은 투명 */
+  transition: opacity 0.3s;
+}
+
+.image-container img:not([src]),
+.image-container img[src=""], 
+.image-container img:not([naturalWidth="0"]) ~ .no-image {
+  opacity: 0; /* 사진이 없으면 img 숨김 */
+}
+
+.image-container:has(img[src=""]) .no-image,
+.image-container:has(img[naturalWidth="0"]) .no-image {
+  opacity: 1; /* 사진 없으면 X 보임 */
+}
+
+/* IE 호환용 자바스크립트 대체 */
+@supports not selector(:has) {
+  .image-container img {
+    opacity: 1;
+  }
+}
